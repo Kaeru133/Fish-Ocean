@@ -1,15 +1,408 @@
-<!doctype html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚓</text></svg>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="BlueGigs - Conectando trabalhos decentes costeiros (ODS 8) à preservação e conservação da vida marinha (ODS 14)." />
-    <meta name="keywords" content="BlueGigs, ODS 14, ODS 8, Vida na Água, Trabalho Decente, Preservação Marinha, Supabase, Vercel" />
-    <title>BlueGigs - Economia Azul (ODS 14 & ODS 8)</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full bg-ocean-deep select-none">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OCEAN CRISIS CONTROL // ODS 14 Monitor</title>
+  <!-- Google Fonts: Outfit & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- CSS Entrypoint -->
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body class="h-full text-gray-300 font-sans flex flex-col relative overflow-hidden">
+  
+  <!-- Overlay Scanlines (Efeito de Monitor Antigo) -->
+  <div class="pointer-events-none absolute inset-0 z-50 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(3,7,18,0.4)_100%)]"></div>
+  <div class="pointer-events-none absolute inset-y-0 left-0 right-0 z-50 h-[4px] bg-white opacity-[0.03] animate-scanline"></div>
+  <div class="pointer-events-none absolute inset-0 z-40 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px]"></div>
+
+  <!-- Header / Painel de Controle Principal -->
+  <header class="border-b border-ocean-navy/50 bg-ocean-abyss/80 backdrop-blur-md px-6 py-4 flex flex-col sm:flex-row justify-between items-center z-30 shrink-0 gap-4">
+    <div class="flex items-center space-x-3">
+      <!-- Indicador de Status Alerta -->
+      <span class="relative flex h-3.5 w-3.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-ocean-alert opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-ocean-alert"></span>
+      </span>
+      <div>
+        <h1 class="text-xl font-bold tracking-wider text-white font-mono flex items-center gap-2">
+          CRISIS-CONTROL <span class="text-ocean-cyan">// ODS-14</span>
+        </h1>
+        <p class="text-[10px] text-gray-500 font-mono tracking-widest uppercase">Global Marine Ecosystem Monitor</p>
+      </div>
+    </div>
+
+    <!-- Navegação Estilo Dashboard -->
+    <nav class="flex space-x-1 bg-ocean-deep border border-ocean-navy p-1 rounded-md font-mono text-xs">
+      <button id="nav-home" class="nav-tab active-tab px-4 py-2 rounded transition-all duration-300 hover:text-white uppercase tracking-wider flex items-center gap-1.5" data-target="screen-home">
+        <span>01 //</span> Overview
+      </button>
+      <button id="nav-problems" class="nav-tab px-4 py-2 rounded transition-all duration-300 text-gray-500 hover:text-white uppercase tracking-wider flex items-center gap-1.5" data-target="screen-problems">
+        <span>02 //</span> Analytics
+      </button>
+      <button id="nav-simulation" class="nav-tab px-4 py-2 rounded transition-all duration-300 text-gray-500 hover:text-white uppercase tracking-wider flex items-center gap-1.5" data-target="screen-simulation">
+        <span>03 //</span> Crisis Lab
+      </button>
+    </nav>
+
+    <!-- Indicador de Tempo / Região -->
+    <div class="hidden md:flex items-center space-x-6 text-right font-mono text-[11px] text-gray-400">
+      <div>
+        <span class="text-gray-600 block">SISTEMA ATIVO</span>
+        <span class="text-ocean-cyan" id="clock-display">00:00:00 UTC</span>
+      </div>
+      <div class="border-l border-ocean-navy/60 pl-6">
+        <span class="text-gray-600 block">NÍVEL DE AMEAÇA</span>
+        <span class="text-ocean-alert font-bold tracking-widest animate-pulse">CRÍTICO (NÍVEL IV)</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Container de Telas (SPA) -->
+  <main class="flex-grow overflow-y-auto relative z-20">
+
+    <!-- ==================== TELA 1: HOME/LANDING ==================== -->
+    <section id="screen-home" class="screen-view min-h-full px-6 py-10 flex flex-col justify-between max-w-7xl mx-auto gap-8">
+      
+      <!-- Hero e Texto Científico -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 my-auto items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <div data-content="home.badge" class="inline-block border border-ocean-alert/30 bg-ocean-alert/5 text-ocean-alert px-3 py-1 text-xs uppercase font-mono tracking-widest rounded">
+            <!-- Injetado do content.json -->
+          </div>
+          <h2 data-content="home.title" class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
+            <!-- Injetado do content.json -->
+          </h2>
+          <p data-content="home.subtitle" class="text-base text-gray-400 leading-relaxed max-w-xl">
+            <!-- Injetado do content.json -->
+          </p>
+          <div class="flex flex-wrap gap-4 pt-2 font-mono">
+            <button id="btn-go-simulation" data-content="home.btnSimulation" class="bg-ocean-cyan hover:bg-opacity-80 text-ocean-deep font-bold px-6 py-3 rounded text-sm transition-all duration-300 shadow-[0_0_15px_rgba(0,240,255,0.3)] flex items-center gap-2">
+              <!-- Injetado do content.json -->
+            </button>
+            <button id="btn-go-problems" data-content="home.btnAnalytics" class="border border-ocean-navy hover:border-ocean-cyan hover:text-white text-gray-300 px-6 py-3 rounded text-sm transition-all duration-300">
+              <!-- Injetado do content.json -->
+            </button>
+          </div>
+        </div>
+        
+        <!-- Bloco de Monitoramento Visual / Radar -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="w-full max-w-md aspect-square rounded-full border-2 border-ocean-navy/80 relative flex items-center justify-center p-6 bg-ocean-abyss/40 shadow-[inset_0_0_50px_rgba(0,0,0,0.8)] overflow-hidden">
+            <!-- Grade do Radar -->
+            <div class="absolute inset-0 rounded-full border border-ocean-navy/30 scale-75"></div>
+            <div class="absolute inset-0 rounded-full border border-ocean-navy/30 scale-50"></div>
+            <div class="absolute inset-0 rounded-full border border-ocean-navy/30 scale-[0.25]"></div>
+            <div class="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[1px] bg-ocean-navy/20"></div>
+            <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[1px] bg-ocean-navy/20"></div>
+            <!-- Linha de Varredura do Radar -->
+            <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-transparent to-ocean-cyan/20 animate-[spin_5s_linear_infinite] origin-center z-10"></div>
+            <!-- Pontos Críticos no Radar -->
+            <div class="absolute top-1/4 left-1/3 w-2.5 h-2.5 bg-ocean-alert rounded-full animate-ping"></div>
+            <div class="absolute top-1/4 left-1/3 w-2.5 h-2.5 bg-ocean-alert rounded-full"></div>
+            <div class="absolute bottom-1/3 right-1/4 w-2 h-2 bg-ocean-coral rounded-full animate-pulse"></div>
+            
+            <!-- Caixa de Status flutuante -->
+            <div class="z-20 bg-ocean-deep/95 border border-ocean-navy p-4 rounded text-center w-4/5 shadow-2xl font-mono">
+              <span data-content="home.radarLabel" class="text-[10px] text-gray-500 uppercase tracking-widest block"><!-- Injetado --></span>
+              <span class="text-3xl font-bold text-ocean-alert font-mono" id="stress-index">82.4%</span>
+              <span data-content="home.radarAlert" class="text-[9px] text-ocean-alert block mt-1 tracking-widest animate-pulse"><!-- Injetado --></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Métricas Principais (Macro Data Cards) -->
+      <div id="home-cards-container" class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 border-t border-ocean-navy/30">
+        <!-- Cards estruturais gerados dinamicamente com base nas cores no style.css e content.json -->
+      </div>
+    </section>
+
+
+    <!-- ==================== TELA 2: PAINEL DO PROBLEMA ==================== -->
+    <section id="screen-problems" class="screen-view min-h-full px-6 py-10 hidden max-w-7xl mx-auto flex flex-col gap-6">
+      <!-- Título de Painel -->
+      <div class="border-b border-ocean-navy/50 pb-4 mb-4">
+        <h2 data-content="analytics.header" class="text-2xl font-bold text-white font-mono tracking-wider uppercase">
+          <!-- Injetado -->
+        </h2>
+        <p data-content="analytics.subheader" class="text-xs text-gray-500 font-mono tracking-widest mt-1"><!-- Injetado --></p>
+      </div>
+
+      <!-- Bloco de Gráficos -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Gráfico Acidificação -->
+        <div class="bg-ocean-abyss/60 border border-ocean-navy/80 p-5 rounded-lg flex flex-col h-[380px] shadow-2xl">
+          <div class="flex justify-between items-center mb-4">
+            <div>
+              <span data-content="analytics.charts.acidification.category" class="text-xs font-mono text-ocean-cyan uppercase tracking-wider block"><!-- Injetado --></span>
+              <h3 data-content="analytics.charts.acidification.title" class="text-base font-bold text-white"><!-- Injetado --></h3>
+            </div>
+            <span data-content="analytics.charts.acidification.badge" class="text-[10px] border border-ocean-alert/30 text-ocean-alert px-2 py-0.5 rounded font-mono uppercase bg-ocean-alert/5 tracking-wider font-bold"><!-- Injetado --></span>
+          </div>
+          <div class="flex-grow relative min-h-0 w-full">
+            <canvas id="chart-acidification"></canvas>
+          </div>
+        </div>
+
+        <!-- Gráfico Poluição Plástico -->
+        <div class="bg-ocean-abyss/60 border border-ocean-navy/80 p-5 rounded-lg flex flex-col h-[380px] shadow-2xl">
+          <div class="flex justify-between items-center mb-4">
+            <div>
+              <span data-content="analytics.charts.plastic.category" class="text-xs font-mono text-ocean-coral uppercase tracking-wider block"><!-- Injetado --></span>
+              <h3 data-content="analytics.charts.plastic.title" class="text-base font-bold text-white"><!-- Injetado --></h3>
+            </div>
+            <span data-content="analytics.charts.plastic.badge" class="text-[10px] border border-ocean-coral/30 text-ocean-coral px-2 py-0.5 rounded font-mono uppercase bg-ocean-coral/5 tracking-wider font-bold"><!-- Injetado --></span>
+          </div>
+          <div class="flex-grow relative min-h-0 w-full">
+            <canvas id="chart-plastic"></canvas>
+          </div>
+        </div>
+
+        <!-- Gráfico Sobrecarga de Pesca -->
+        <div class="bg-ocean-abyss/60 border border-ocean-navy/80 p-5 rounded-lg flex flex-col h-[380px] lg:col-span-2 shadow-2xl">
+          <div class="flex justify-between items-center mb-4">
+            <div>
+              <span data-content="analytics.charts.overfishing.category" class="text-xs font-mono text-ocean-cyan uppercase tracking-wider block"><!-- Injetado --></span>
+              <h3 data-content="analytics.charts.overfishing.title" class="text-base font-bold text-white"><!-- Injetado --></h3>
+            </div>
+            <span data-content="analytics.charts.overfishing.badge" class="text-[10px] border border-ocean-cyan/30 text-ocean-cyan px-2 py-0.5 rounded font-mono uppercase bg-ocean-cyan/5 tracking-wider font-bold"><!-- Injetado --></span>
+          </div>
+          <div class="flex-grow relative min-h-0 w-full">
+            <canvas id="chart-overfishing"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== TELA 3: SIMULAÇÃO MULTIPLAYER ==================== -->
+    <section id="screen-simulation" class="screen-view min-h-full px-6 py-10 hidden max-w-7xl mx-auto flex flex-col justify-between gap-6">
+      
+      <!-- Painel de Conexão à Sala -->
+      <div id="sim-connection-panel" class="bg-ocean-abyss/90 border-2 border-ocean-navy p-8 rounded-lg max-w-lg mx-auto my-auto space-y-6 shadow-2xl relative">
+        <div data-content="simulation.connection.badge" class="absolute -top-3 left-4 border border-ocean-cyan/30 bg-ocean-deep text-ocean-cyan px-3 py-0.5 text-[10px] font-mono tracking-widest uppercase">
+          <!-- Injetado -->
+        </div>
+        <div class="text-center space-y-2">
+          <h2 data-content="simulation.connection.title" class="text-2xl font-bold text-white tracking-wide font-mono uppercase"><!-- Injetado --></h2>
+          <p data-content="simulation.connection.desc" class="text-xs text-gray-400"><!-- Injetado --></p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-4 pt-4">
+          <button id="btn-create-room" data-content="simulation.connection.btnCreate" class="w-full bg-ocean-cyan hover:bg-opacity-80 text-ocean-deep font-bold py-3 px-4 rounded font-mono tracking-wider transition duration-300 shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+            <!-- Injetado -->
+          </button>
+          
+          <div class="flex items-center my-2 font-mono text-xs text-gray-500">
+            <div class="flex-grow h-[1px] bg-ocean-navy/60"></div>
+            <span data-content="simulation.connection.divider" class="px-3"><!-- Injetado --></span>
+            <div class="flex-grow h-[1px] bg-ocean-navy/60"></div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-2">
+            <input type="text" id="input-room-id" placeholder="EX: ROOM-839F" class="flex-grow bg-ocean-deep border border-ocean-navy rounded px-4 py-3 text-white font-mono placeholder-gray-600 focus:outline-none focus:border-ocean-cyan transition uppercase text-center sm:text-left">
+            <button id="btn-join-room" data-content="simulation.connection.btnJoin" class="bg-ocean-deep border border-ocean-cyan hover:bg-ocean-cyan hover:text-ocean-deep text-ocean-cyan font-bold py-3 px-6 rounded font-mono transition duration-300">
+              <!-- Injetado -->
+            </button>
+          </div>
+        </div>
+
+        <div class="border-t border-ocean-navy/50 pt-4 text-center">
+          <div id="connection-warning" data-content="simulation.connection.warning" class="text-[10px] font-mono text-ocean-coral hidden">
+            <!-- Injetado -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Painel de Seleção de Papéis -->
+      <div id="sim-role-panel" class="hidden bg-ocean-abyss/90 border border-ocean-navy p-8 rounded-lg max-w-2xl mx-auto my-auto space-y-6 shadow-2xl">
+        <div class="text-center space-y-2">
+          <span class="text-[10px] font-mono text-ocean-cyan tracking-widest block uppercase" id="display-room-title">SESSÃO: INDEFINIDA</span>
+          <h2 data-content="simulation.roleSelection.title" class="text-xl font-bold text-white tracking-wide font-mono uppercase"><!-- Injetado --></h2>
+          <p data-content="simulation.roleSelection.desc" class="text-xs text-gray-400"><!-- Injetado --></p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+          <!-- Setor Público (Governo) -->
+          <button id="btn-select-gov" class="group border border-ocean-navy hover:border-ocean-gov bg-ocean-deep/50 hover:bg-ocean-gov/5 p-6 rounded-lg text-left transition duration-300 relative overflow-hidden flex flex-col justify-between">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-ocean-gov/10 rounded-bl-full translate-x-4 -translate-y-4 group-hover:scale-110 transition duration-300"></div>
+            <div>
+              <span data-content="simulation.roleSelection.gov.category" class="text-[10px] font-mono text-ocean-gov tracking-widest block mb-2 uppercase"><!-- Injetado --></span>
+              <h3 data-content="simulation.roleSelection.gov.title" class="text-lg font-bold text-white font-mono group-hover:text-ocean-gov transition"><!-- Injetado --></h3>
+              <p data-content="simulation.roleSelection.gov.desc" class="text-xs text-gray-400 mt-2 leading-relaxed"><!-- Injetado --></p>
+            </div>
+            <span class="text-xs font-mono text-ocean-gov mt-6 flex items-center gap-1.5" id="btn-gov-select-text">
+              SELECIONAR PAPEL &rarr;
+            </span>
+          </button>
+
+          <!-- Setor Privado / ONGs -->
+          <button id="btn-select-private" class="group border border-ocean-navy hover:border-ocean-private bg-ocean-deep/50 hover:bg-ocean-private/5 p-6 rounded-lg text-left transition duration-300 relative overflow-hidden flex flex-col justify-between">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-ocean-private/10 rounded-bl-full translate-x-4 -translate-y-4 group-hover:scale-110 transition duration-300"></div>
+            <div>
+              <span data-content="simulation.roleSelection.private.category" class="text-[10px] font-mono text-ocean-private tracking-widest block mb-2 uppercase"><!-- Injetado --></span>
+              <h3 data-content="simulation.roleSelection.private.title" class="text-lg font-bold text-white font-mono group-hover:text-ocean-private transition"><!-- Injetado --></h3>
+              <p data-content="simulation.roleSelection.private.desc" class="text-xs text-gray-400 mt-2 leading-relaxed"><!-- Injetado --></p>
+            </div>
+            <span class="text-xs font-mono text-ocean-private mt-6 flex items-center gap-1.5" id="btn-private-select-text">
+              SELECIONAR PAPEL &rarr;
+            </span>
+          </button>
+        </div>
+
+        <!-- Mensagens de Espera do Outro Jogador -->
+        <div id="sim-role-waiting" class="text-center font-mono text-xs text-gray-400 pt-4 border-t border-ocean-navy/40 hidden">
+          <span class="animate-pulse flex items-center justify-center gap-2">
+            <span class="w-1.5 h-1.5 bg-ocean-cyan rounded-full"></span>
+            <span data-content="simulation.roleSelection.waiting"><!-- Injetado --></span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Simulador Ativo -->
+      <div id="sim-active-panel" class="hidden w-full flex flex-col lg:grid lg:grid-cols-12 gap-6 flex-grow">
+        
+        <!-- Painel Central de Controle de Crise (Esquerda) -->
+        <div class="lg:col-span-8 flex flex-col gap-6">
+          <div class="bg-ocean-abyss border border-ocean-navy p-5 rounded-lg flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="font-mono">
+              <span data-content="simulation.active.roomIdPrefix" class="text-[10px] text-gray-500 uppercase block tracking-wider"><!-- Injetado --></span>
+              <span class="text-sm font-bold text-white uppercase" id="sim-room-id-display">SESSÃO: ROOM-XXXX</span>
+            </div>
+            <div class="text-center sm:text-right">
+              <span data-content="simulation.active.statusLabel" class="text-[10px] text-gray-500 font-mono uppercase block tracking-wider"><!-- Injetado --></span>
+              <span class="text-base font-bold font-mono tracking-widest uppercase animate-pulse" id="sim-status-label">ESTABILIZANDO</span>
+            </div>
+          </div>
+
+          <!-- Três Medidores Globais Críticos -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Saúde Global -->
+            <div class="bg-ocean-abyss border border-ocean-navy p-5 rounded-lg flex flex-col relative overflow-hidden">
+              <div class="flex justify-between items-center mb-2">
+                <span data-content="simulation.active.gauges.health" class="text-xs font-mono text-gray-400 uppercase"><!-- Injetado --></span>
+                <span class="text-xl font-bold font-mono text-white" id="gauge-health-value">50%</span>
+              </div>
+              <div class="w-full bg-ocean-deep h-3.5 rounded-full overflow-hidden border border-ocean-navy">
+                <div id="gauge-health-bar" class="h-full bg-ocean-cyan transition-all duration-500 shadow-[0_0_10px_rgba(0,240,255,0.5)]" style="width: 50%;"></div>
+              </div>
+              <span data-content="simulation.active.gauges.healthTarget" class="text-[9px] text-gray-500 font-mono mt-2 uppercase tracking-wider block"><!-- Injetado --></span>
+            </div>
+
+            <!-- Nível de Poluição -->
+            <div class="bg-ocean-abyss border border-ocean-navy p-5 rounded-lg flex flex-col relative overflow-hidden">
+              <div class="flex justify-between items-center mb-2">
+                <span data-content="simulation.active.gauges.pollution" class="text-xs font-mono text-gray-400 uppercase"><!-- Injetado --></span>
+                <span class="text-xl font-bold font-mono text-white" id="gauge-pollution-value">75%</span>
+              </div>
+              <div class="w-full bg-ocean-deep h-3.5 rounded-full overflow-hidden border border-ocean-navy">
+                <div id="gauge-pollution-bar" class="h-full bg-ocean-alert transition-all duration-500 shadow-[0_0_10px_rgba(255,77,77,0.5)]" style="width: 75%;"></div>
+              </div>
+              <span data-content="simulation.active.gauges.pollutionTarget" class="text-[9px] text-gray-500 font-mono mt-2 uppercase tracking-wider block"><!-- Injetado --></span>
+            </div>
+
+            <!-- População de Peixes -->
+            <div class="bg-ocean-abyss border border-ocean-navy p-5 rounded-lg flex flex-col relative overflow-hidden">
+              <div class="flex justify-between items-center mb-2">
+                <span data-content="simulation.active.gauges.fish" class="text-xs font-mono text-gray-400 uppercase"><!-- Injetado --></span>
+                <span class="text-xl font-bold font-mono text-white" id="gauge-fish-value">40%</span>
+              </div>
+              <div class="w-full bg-ocean-deep h-3.5 rounded-full overflow-hidden border border-ocean-navy">
+                <div id="gauge-fish-bar" class="h-full bg-emerald-500 transition-all duration-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]" style="width: 40%;"></div>
+              </div>
+              <span data-content="simulation.active.gauges.fishTarget" class="text-[9px] text-gray-500 font-mono mt-2 uppercase tracking-wider block"><!-- Injetado --></span>
+            </div>
+          </div>
+
+          <!-- Gráfico da Simulação -->
+          <div class="bg-ocean-abyss/60 border border-ocean-navy p-5 rounded-lg flex-grow flex flex-col min-h-[300px]">
+            <div class="flex justify-between items-center mb-4">
+              <div>
+                <span data-content="simulation.active.chartCategory" class="text-xs font-mono text-ocean-cyan uppercase tracking-wider block"><!-- Injetado --></span>
+                <h3 data-content="simulation.active.chartTitle" class="text-sm font-bold text-white"><!-- Injetado --></h3>
+              </div>
+              <span class="text-[10px] text-gray-400 font-mono uppercase tracking-wider flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-ocean-cyan animate-pulse"></span>
+                <span data-content="simulation.active.realtimeLabel"><!-- Injetado --></span>
+              </span>
+            </div>
+            <div class="flex-grow relative min-h-0 w-full">
+              <canvas id="chart-simulation-realtime"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Painel de Controles e Logs (Direita) -->
+        <div class="lg:col-span-4 flex flex-col gap-6">
+          <div class="bg-ocean-abyss border border-ocean-navy p-5 rounded-lg space-y-4">
+            <div class="flex justify-between items-center">
+              <div>
+                <span data-content="simulation.active.roleLabel" class="text-[9px] text-gray-500 font-mono uppercase tracking-wider block"><!-- Injetado --></span>
+                <span class="text-base font-bold text-white font-mono uppercase" id="sim-my-role-display">CARREGANDO...</span>
+              </div>
+              <div class="text-right">
+                <span data-content="simulation.active.budgetLabel" class="text-[9px] text-gray-500 font-mono uppercase tracking-wider block"><!-- Injetado --></span>
+                <span class="text-2xl font-bold font-mono text-ocean-cyan" id="sim-points-display">100 / 100</span>
+              </div>
+            </div>
+            <div class="text-xs text-gray-400" id="sim-role-instructions">
+              <!-- Injetado -->
+            </div>
+          </div>
+
+          <div class="bg-ocean-abyss border border-ocean-navy p-5 rounded-lg flex-grow flex flex-col justify-between gap-4">
+            <div class="space-y-4">
+              <span data-content="simulation.active.actionsHeader" class="text-xs font-mono text-gray-400 uppercase tracking-widest block border-b border-ocean-navy pb-2"><!-- Injetado --></span>
+              <div id="sim-actions-container" class="space-y-3">
+                <p class="text-xs text-gray-500 font-mono italic">Inicializando painel tático...</p>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-ocean-navy/40 flex justify-between gap-2">
+              <button id="btn-reset-simulation" data-content="simulation.active.btnReset" class="flex-grow border border-ocean-alert/50 text-ocean-alert hover:bg-ocean-alert/10 text-xs font-mono py-2 rounded transition">
+                <!-- Injetado -->
+              </button>
+              <button id="btn-leave-simulation" data-content="simulation.active.btnLeave" class="flex-grow border border-ocean-navy hover:border-ocean-alert text-xs font-mono py-2 rounded transition">
+                <!-- Injetado -->
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-ocean-deep border border-ocean-navy p-4 rounded-lg h-[200px] flex flex-col justify-between font-mono text-xs">
+            <div class="flex justify-between items-center border-b border-ocean-navy/60 pb-1.5 mb-2 shrink-0">
+              <span data-content="simulation.active.terminalLabel" class="text-[10px] text-gray-500 uppercase tracking-wider"><!-- Injetado --></span>
+              <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+            </div>
+            <div id="sim-logs-terminal" class="flex-grow overflow-y-auto space-y-1 text-[11px] text-gray-400 leading-normal scrollbar-thin select-text">
+              <!-- Logs do sistema serão postados aqui -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Rodapé Científico -->
+  <footer class="border-t border-ocean-navy/50 bg-ocean-abyss/80 backdrop-blur-md px-6 py-3 text-center text-[10px] text-gray-500 font-mono z-30 shrink-0 flex flex-col sm:flex-row justify-between items-center gap-2">
+    <div>
+      PAINEL DE CRISE MARINHA &copy; 2026 // EM CONFORMIDADE COM A METAS DA ODS-14
+    </div>
+    <div class="flex space-x-4">
+      <a href="https://sdgs.un.org/goals/goal14" target="_blank" class="hover:text-ocean-cyan transition">UN SDG 14 Info</a>
+      <span class="text-ocean-navy">//</span>
+      <a href="https://github.com" target="_blank" class="hover:text-ocean-cyan transition">GitHub Repository</a>
+    </div>
+  </footer>
+
+  <!-- Bibliotecas externas via CDNs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Script Principal -->
+  <script type="module" src="/src/main.js"></script>
+</body>
 </html>

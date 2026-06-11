@@ -1,0 +1,147 @@
+{
+  "home": {
+    "badge": "RELATÓRIO CIENTÍFICO GLOBAL (2026)",
+    "title": "Nossos oceanos estão em colapso iminente.",
+    "subtitle": "A vida abaixo da água regulamenta o clima da Terra, produz metade do oxigênio que respiramos e alimenta bilhões de pessoas. A industrialização desenfreada, a acidificação por CO₂ e o despejo massivo de poluentes estão empurrando a biosfera marinha para um ponto de não retorno.",
+    "btnSimulation": "INICIAR SIMULADOR MULTIPLAYER",
+    "btnAnalytics": "VER DADOS ANALÍTICOS",
+    "radarLabel": "Índice de Estresse de Ecossistema",
+    "radarAlert": "DESVIO CRÍTICO DE TEMPERATURA",
+    "cards": [
+      {
+        "id": "acidification",
+        "category": "Impacto Químico",
+        "value": "+26%",
+        "title": "Aumento na Acidificação",
+        "desc": "A absorção de CO₂ atmosférico altera o pH da água, dissolvendo as conchas dos moluscos e dizimando recifes de coral."
+      },
+      {
+        "id": "plastic",
+        "category": "Acúmulo Sintético",
+        "value": "8M Ton",
+        "title": "Plástico Ingerido Anualmente",
+        "desc": "Os microplásticos já infiltram a cadeia alimentar marinha global, acumulando toxinas nos tecidos dos peixes."
+      },
+      {
+        "id": "overfishing",
+        "category": "Colapso Biológico",
+        "value": "33.1%",
+        "title": "Populações Sob Sobrecarga de Pesca",
+        "desc": "A sobrepesca predatória e frotas de arrasto não rastreadas esgotam recursos biológicos mais rápido do que a capacidade de reprodução natural."
+      }
+    ]
+  },
+  "analytics": {
+    "header": "ANALÍTICAS DE CRISE DOS OCEANOS // DADOS HISTÓRICOS & PROJEÇÕES",
+    "subheader": "SISTEMA CIENTÍFICO DE VISUALIZAÇÃO DE DADOS",
+    "charts": {
+      "acidification": {
+        "title": "Curva de Acidificação da Água Marinha",
+        "category": "Métrica // Nível de pH Global",
+        "badge": "ALERTA pH",
+        "label": "pH do Oceano Superficial"
+      },
+      "plastic": {
+        "title": "Projeção de Plásticos nos Oceanos (Milhões Toneladas)",
+        "category": "Métrica // Acúmulo de Lixo Plástico",
+        "badge": "PROJEÇÃO CRÍTICA",
+        "label": "Resíduos Acumulados (M Ton)"
+      },
+      "overfishing": {
+        "title": "Degradação das Populações de Peixes por Espécie e Sobrepesca",
+        "category": "Métrica // Biodiversidade e Captura",
+        "badge": "STATUS DE POPULAÇÕES",
+        "labelSustainable": "Biomassa Saudável (%)",
+        "labelCurrent": "Biomassa Atual (2026)",
+        "species": ["Atum-azul", "Bacalhau-do-Atlântico", "Tubarão-martelo", "Arenque-do-Mar", "Garoupa"]
+      }
+    }
+  },
+  "simulation": {
+    "connection": {
+      "badge": "Acesso ao Simulador de Crise",
+      "title": "LABORATÓRIO DE SIMULAÇÃO COOPERATIVA",
+      "desc": "Entre em uma sessão compartilhada de tomada de decisão. Ambos os setores (Público e Privado) devem cooperar de forma síncrona para evitar o ecocídio do ecossistema marinho fictício.",
+      "btnCreate": "CRIAR NOVA SALA DE SIMULAÇÃO",
+      "divider": "OU CONECTAR EM SALA EXISTENTE",
+      "btnJoin": "ENTRAR",
+      "warning": "AVISO: Credenciais Supabase não configuradas no arquivo .env. O simulador rodará em modo local (Single-Player: você controlará ambos os papéis)."
+    },
+    "roleSelection": {
+      "title": "SELECIONE SUA FUNÇÃO DE GERENCIAMENTO",
+      "desc": "Cada jogador tem acesso a diferentes políticas e ações de investimento. As ações de um impactam as variáveis globais que determinam o ecocídio ou a recuperação.",
+      "gov": {
+        "title": "01 // GOVERNO",
+        "category": "SETOR A",
+        "desc": "Focado na criação de áreas protegidas de pesca, legislação contra pesca de arrasto, e aprovação de incentivos fiscais e subsídios para frotas sustentáveis.",
+        "instructions": "Você gerencia as políticas públicas ambientais. Consuma pontos para implantar leis e áreas protegidas."
+      },
+      "private": {
+        "title": "02 // PRIVADO & ONGs",
+        "category": "SETOR B",
+        "desc": "Focado no investimento em plantas de reciclagem de plásticos nas orlas de rios, e desenvolvimento/instalação de sensores e inteligência artificial para rastreio de frotas privadas.",
+        "instructions": "Você gerencia a infraestrutura industrial e rastreabilidade. Invista pontos em reciclagem e inteligência."
+      },
+      "waiting": "Aguardando a conexão do segundo jogador para iniciar a simulação..."
+    },
+    "active": {
+      "roomIdPrefix": "SESSÃO: ",
+      "statusLabel": "ESTADO DO ECOSSISTEMA",
+      "realtimeLabel": "Sincronizando",
+      "chartTitle": "Gráfico de Telemetria de Simulação",
+      "chartCategory": "Monitor Científico // Tempo Real",
+      "chartLabels": {
+        "health": "Saúde do Oceano",
+        "pollution": "Poluição",
+        "fish": "Peixes"
+      },
+      "budgetLabel": "ORÇAMENTO DE PONTOS",
+      "roleLabel": "FUNÇÃO ATRIBUÍDA",
+      "actionsHeader": "Painel de Ações Ativáveis",
+      "btnReset": "REINICIAR SALA",
+      "btnLeave": "SAIR DA SALA",
+      "terminalLabel": "TERMINAL DE COMANDO LOG",
+      "gauges": {
+        "health": "Saúde do Oceano",
+        "pollution": "Nível de Poluição",
+        "fish": "População de Peixes",
+        "healthTarget": "Alvo de Recuperação: >90%",
+        "pollutionTarget": "Alvo de Redução: <20%",
+        "fishTarget": "Alvo de Equilíbrio: >80%"
+      },
+      "statusStates": {
+        "stable": "ESTÁVEL",
+        "unstable": "INSTÁVEL",
+        "critical": "COLAPSO IMINENTE"
+      }
+    },
+    "actions": {
+      "gov": [
+        { "id": "amp", "name": "Criar Área Marinha Protegida (AMP)", "cost": 40, "duration": 10 },
+        { "id": "subsidies", "name": "Leis de Subsídio Sustentável", "cost": 30, "duration": 8 }
+      ],
+      "private": [
+        { "id": "recycling", "name": "Infraestrutura de Reciclagem", "cost": 40, "duration": 10 },
+        { "id": "tracking", "name": "Rastreio de Frotas via IA", "cost": 30, "duration": 8 }
+      ]
+    },
+    "logs": {
+      "systemLocal": "[SYSTEM] Iniciado simulador em modo LOCAL (Sem Conexão Realtime).",
+      "systemLocalDesc": "[SYSTEM] Controle livre: você gerencia o Governo e a Iniciativa Privada simultaneamente.",
+      "databaseConnecting": "[DATABASE] Conectando ao canal realtime: room:{roomId}...",
+      "systemWaiting": "[SISTEMA] Conectado e aguardando segundo jogador...",
+      "presenceSync": "[PRESENÇA] Sincronizado. Jogadores online: {roles}",
+      "presenceJoined": "[SISTEMA] Conexão multiplayer estabelecida. Iniciando simulação de crise.",
+      "presenceLeft": "[ALERTA] Jogador desconectado. Simulação suspensa.",
+      "actionTriggered": "[AÇÃO] {userRole} ativou: \"{actionName}\"",
+      "actionExpired": "[SISTEMA] Efeito de \"{actionName}\" expirou.",
+      "budgetInsufficient": "[RECURSOS] Orçamento insuficiente para ativar: \"{actionName}\"",
+      "alertIllegalFishing": "[ALERTA] AMP sob ataque de pesca ilegal de arrasto. Requer \"Rastreio de Frotas via IA\".",
+      "alertToxicity": "[CRÍTICO] Toxicidade da água sufocando corais. Nível de poluição crítico!",
+      "logCollapse": "[COLAPSO] A biosfera do oceano está entrando em um deserto biológico!",
+      "logVictory": "[VITÓRIA] Sinergia ideal atingida! Equilíbrio do ecossistema marinho restaurado.",
+      "logReset": "[SISTEMA] Sala reiniciada por requisição de usuário.",
+      "logLeave": "[SISTEMA] Desconectado da sala de comando."
+    }
+  }
+}
